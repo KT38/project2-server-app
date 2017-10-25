@@ -1,0 +1,62 @@
+img{
+    position: fixed;
+    bottom: 0 ;
+    left: 0;
+    width: 400px;
+}
+
+form{
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+}
+
+.res{
+    position: absolute;
+    width:900px;
+    right: 10px;
+}
+
+.balloon4 {
+    position: relative;
+    height: 300px; 
+    margin: 2em 5px 2em 40px;
+    padding: 15px;
+    background: #fdffc6;
+    border-radius: 30px;
+    overflow: auto;
+}.balloon4:before{
+    content: "";
+    position: absolute;
+    left: -38px;
+    width: 13px;
+    height: 12px;
+    bottom: 0;
+    background: #fdffc6;
+    border-radius: 50%;
+}.balloon4:after{
+    content: "";
+    position: absolute;
+    left: -24px;
+    width: 20px;
+    height: 18px;
+    bottom: 3px;
+    background: #fdffc6;
+    border-radius: 50%;
+}
+
+@font-face{
+    font-family:'KFhimaji';
+    src:url('KFhimaji.ttf') format('opentype');
+}
+
+.balloon4 p {
+    font-family:'KFhimaji';    
+    font-size: 60px;
+    display: table-cell;
+    width: 900px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+
+} 
