@@ -24,25 +24,6 @@ form{
     padding: 15px;
     background: #fdffc6;
     border-radius: 30px;
-    overflow: auto;
-}.balloon4:before{
-    content: "";
-    position: absolute;
-    left: -38px;
-    width: 13px;
-    height: 12px;
-    bottom: 0;
-    background: #fdffc6;
-    border-radius: 50%;
-}.balloon4:after{
-    content: "";
-    position: absolute;
-    left: -24px;
-    width: 20px;
-    height: 18px;
-    bottom: 3px;
-    background: #fdffc6;
-    border-radius: 50%;
 }
 
 @font-face{

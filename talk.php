@@ -1,4 +1,6 @@
 <?php
+require_once("config.php");
+
 if(isset($_POST["msg"]))
 {
     //フォームの受取
@@ -27,7 +29,7 @@ if(isset($_POST["msg"]))
             $send_context = '';
         }
 
-        //レスポンスボディで'mode'を指定するとしりとりもできるらしいからその設定（たまにミスるけど多分API側の問題）
+        //レスポンスボディで'mode'を指定するとしりとりもできるらしいからその設定（たまにおかしいけど多分API側の問題）
         if(isset($return_mode))
         {
             $send_mode = $return_mode;
@@ -38,8 +40,8 @@ if(isset($_POST["msg"]))
         }
 
 
-        //この発表で使う人はみんな神戸市の男性なのでそんな感じでリクエストを送る。詳しくはこのURLを参照 https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=dialogue&p_name=api_1#tag01を参照
-        $api_key = '7933792f473969764c76315772487a6230466c654e34642e304f65522f4d797a714e483870766834675842';
+        //それっぽい感じでリクエストを送る。詳しくはこのURLを参照 https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=dialogue&p_name=api_1#tag01を参照
+        $api_key = $key['docomo'];
         $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
         $req_body = array('utt' => $send_msg, 't' => 30, 'place' => '神戸', 'sex' => '男', 'context' => $send_context, 'mode' => $send_mode);
         $headers = array(
@@ -68,7 +70,7 @@ if(isset($_POST["msg"]))
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <img src="image/KT.png" alt="">
+        <img src="image/KTvanilla.png" alt="">
 
         <form method="post" action=".">
             <textarea name="msg" cols="80" rows="3" placeholder="メッセージを入力してね"><?php if(isset($send_msg)){echo $send_msg;} ?></textarea>
