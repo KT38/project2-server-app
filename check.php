@@ -44,7 +44,7 @@ if(!empty($_POST))
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <script language="JavaScript">
-            //二度押し防止
+            //送信ボタンの二度押し防止
             function nidooshi(form) {
                 var elements = form.elements;
                 for (var i = 0; i < elements.length; i++) {
@@ -66,7 +66,7 @@ if(!empty($_POST))
             <p>生年月日:<?php echo $year."年".$month."月".$day."日" ?></p>
         </div>
 
-        <form method="post" action="">
+        <form method="post" action="talk.php">
             <input type="button" value = "戻る" onclick="history.back()">
             <input type="submit" value = "登録" name="add" onSubmit="return nidooshi(this)">
         </form>

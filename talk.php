@@ -1,6 +1,34 @@
 <?php
 require_once("config.php");
 
+session_start();
+$id = $_SESSION['join']['id'];
+$pass = $_SESSION['join']['pass'];
+
+//MySQLに接続
+$mysqli = new mysqli($db['host'], $db['user'], $db['pass'], $db['dbname']);
+if(!$mysqli)
+{
+    echo "データベースの接続エラー";
+}
+//文字コード
+$mysqli->set_charset("utf-8");
+
+function select_value($value, $id)
+{
+
+    //クエリの発行
+    $query = "select $value from user where id='{$id}' ";
+    $result = $mysqli->query($query);
+    return $result;
+}
+
+$sex = select_value("sex",$id);
+$bloodtype = select_value("bloodtype",$id);
+$year = select_value("year",$id);
+$month = select_value("month",$id);
+$day = select_value("day",$id);
+
 if(isset($_POST["msg"]))
 {
     //フォームの受取
@@ -43,7 +71,7 @@ if(isset($_POST["msg"]))
         //それっぽい感じでリクエストを送る。詳しくはこのURLを参照 https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=dialogue&p_name=api_1#tag01を参照
         $api_key = $key['docomo'];
         $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
-        $req_body = array('utt' => $send_msg, 't' => 30, 'place' => '神戸', 'sex' => '男', 'context' => $send_context, 'mode' => $send_mode);
+        $req_body = array('utt' => $send_msg, 't' => 30, 'nickname' => $id, 'sex' => $sex, 'bloodtype'=> $bloodtype,'birthdateY' => $year, 'birthdateM' => $month, 'birthdateD' => $day,  'context' => $send_context, 'mode' => $send_mode);
         $headers = array(
             'Content-Type: application/json; charset=UTF-8',
         );
@@ -62,6 +90,10 @@ if(isset($_POST["msg"]))
         $return_mode = $response->mode; //しりとりのやつ
     }
 }
+
+//データベースの切断
+$mysqli->close();
+
 ?>
 
 <html>  
@@ -80,7 +112,16 @@ if(isset($_POST["msg"]))
         <div class="res">
             <div class="balloon4">
                 <p>
-                    <?php if(isset($return_msg)){echo $return_msg;} ?>
+                    <?php 
+                        if(isset($return_msg))
+                        {
+                            echo $return_msg;
+                        }
+                        else
+                        {
+                            echo $id."さんこんにちは！僕と一緒にお話ししよう！";
+                        } 
+                    ?>
                 </p>
             </div> 
         </div>

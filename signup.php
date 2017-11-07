@@ -44,7 +44,7 @@ if (!empty($_POST))
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script language="JavaScript">
-            //二度押し防止
+            //送信ボタンの二度押し防止
             function nidooshi(form) {
                 var elements = form.elements;
                 for (var i = 0; i < elements.length; i++) {
