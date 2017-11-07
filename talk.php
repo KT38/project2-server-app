@@ -104,7 +104,7 @@ $mysqli->close();
     <body>
         <img src="image/KTvanilla.png" alt="">
 
-        <form method="post" action=".">
+        <form method="post">
             <textarea name="msg" cols="80" rows="3" placeholder="メッセージを入力してね"><?php if(isset($send_msg)){echo $send_msg;} ?></textarea>
             <input type="submit">
         </form>

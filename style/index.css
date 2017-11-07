@@ -1,0 +1,42 @@
+*{
+    text-align: center;
+}
+
+img{
+    margin: 2em;
+    filter: drop-shadow(0px 0px 200px #ff0);    
+}
+
+@font-face{
+    font-family:'KFhimaji';
+    src:url('KFhimaji.ttf') format('opentype');
+}
+
+ul{
+    margin: 50px auto;
+    font-family:'KFhimaji';    
+    font-size: 60px;
+}
+
+a{
+    text-decoration: none;
+    padding: 10px 150px;
+    border: groove 3px #ffe;
+    border-radius: 20px;
+}
+a:link 
+{
+    color:#ff0;
+}
+a:visited
+{
+    color:#ff8;
+} 
+a:hover
+{
+    color:#ccf;
+} 
+a:active
+{
+    color:#bbf;
+} 
