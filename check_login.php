@@ -9,7 +9,8 @@ $pass = $_POST["pass"];
 //接続
 $mysqli = new mysqli($db['host'], $db['user'], $db['pass'], $db['dbname']);
 //文字コード
-$mysqli->set_charset("utf-8");
+
+$mysqli -> set_charset("utf-8");
 
 //クエリの発行
 $query = "select pass from user where id='{$id}'";
